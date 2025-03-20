@@ -1,0 +1,81 @@
+---
+description: Making Typst Templates
+globs: *.typ
+alwaysApply: false
+---
+
+# Making Typst Templates
+
+## Important
+
+* always check the terminal output for compilation errors before finishing a task
+* this project has the goal of recreating CV_Mathis_Witte.pdf, so always cross read this pdf file to see if it matches the look
+
+## Basic Information
+- Typst is a markup-based typesetting system that compiles to PDF
+- File extension: `.typ`
+- Config is written in the same language as content
+- Supports mathematical notation, references, bibliography, and more
+
+## Key Features
+- Fast compilation with instant preview
+- Clean, readable syntax
+- Powerful layout engine
+- Extensive package ecosystem
+- First-class math support
+
+## Documentation References
+@typst("https://typst.app/docs") - Official Typst Documentation
+@typst-book("https://typst.app/docs/tutorial/") - Official Tutorial
+@typst-packages("https://typst.app/packages") - Package Repository
+
+## Common Patterns
+```typ
+// Document setup
+#set document(author: "Your Name", title: "Document Title")
+#set page(
+  margin: (x: 1.8cm, y: 2.4cm),
+  numbering: "1",
+)
+
+// Headings
+= Level 1 Heading
+== Level 2 Heading
+
+// Lists
+- Unordered list
++ Ordered list
+
+// Code blocks
+```rust
+fn main() {
+    println!("Hello, Typst!");
+}
+```
+
+// Math equations
+$ sum_(k=0)^n k = (n(n+1))/2 $
+
+// Tables
+#table(
+  columns: (auto, auto),
+  [*Header 1*], [*Header 2*],
+  [Cell 1], [Cell 2],
+)
+```
+
+## Best Practices
+1. Use templates for consistent styling
+2. Leverage variables for reusable content
+3. Break large documents into modules
+4. Use functions for repeated patterns
+5. Comment complex layouts
+
+## Common Imports
+```typ
+#import "@preview/cetz:0.2.0"  // Drawing
+#import "@preview/tablex:0.0.8": tablex // Enhanced tables
+#import "@preview/polylux:0.3.1": * // Presentations
+```
+
+You can @ files here for specific examples in your workspace. 
