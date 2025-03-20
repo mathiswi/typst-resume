@@ -7,7 +7,6 @@ A clean, modern CV/resume template created with [Typst](https://typst.app/).
 - `template.typ`: Contains all the styling and layout functions
 - `cv-showcase.typ`: A demo/showcase version with dummy data that can be published or shared
 - `cv-personal.typ`: Your personal CV (kept in sync with a copy in the parent directory)
-- `sync-cv.sh`: Script to sync your CV between directories
 
 ## Features
 
@@ -35,22 +34,6 @@ Or use the watch mode for live preview:
 typst watch cv-showcase.typ
 ```
 
-## Personal CV Management
-
-This repository includes a system for managing your personal CV:
-
-- `cv-personal.typ` in this directory is your working copy
-- A copy is maintained in the parent directory (`../typst-resume-content/cv-personal.typ`)
-- Use the sync script to keep them in sync:
-
-```bash
-# Copy from current directory to parent
-./sync-cv.sh
-
-# Copy from parent directory to current
-./sync-cv.sh parent
-```
-
 ## Customization
 
 The template is highly customizable. You can modify:
@@ -62,10 +45,3 @@ The template is highly customizable. You can modify:
 
 Edit the `defaultTheme` in `template.typ` to customize the appearance.
 
-## License
-
-MIT
-
-## Credits
-
-Created by Mathis Witte 
