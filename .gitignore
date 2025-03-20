@@ -1,2 +1,15 @@
-cv-personal.pdf
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+
+# Node modules (if using Node.js)
+node_modules/
+
+# Personal content that should not be committed
 cv-personal.typ
+cv-personal.pdf

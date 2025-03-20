@@ -10,7 +10,7 @@
   
   // Typography
   fonts: (
-    primary: "Arial",
+    primary: "Trebuchet MS",
     size: (
       base: 9.5pt,      // Slightly increased base size
       heading: 11pt,

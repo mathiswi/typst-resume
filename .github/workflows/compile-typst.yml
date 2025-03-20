@@ -1,0 +1,87 @@
+name: Compile Typst Documents
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.typ'
+      - '.github/workflows/compile-typst.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - '**.typ'
+  workflow_dispatch:  # Allow manual trigger
+
+# Permissions needed for GitHub pages deployment
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v4
+        with:
+          typst-version: 'latest'
+      
+      - name: Cache Fontist installation
+        uses: actions/cache@v3
+        id: fontist-cache
+        with:
+          path: |
+            ~/.gem
+            ~/.fontist
+          key: ${{ runner.os }}-fontist-${{ hashFiles('**/*.yml') }}
+          restore-keys: |
+            ${{ runner.os }}-fontist-
+      
+      - name: Setup Fontist
+        uses: fontist/setup-fontist@v2
+        with:
+          cache: true
+      
+      - name: Cache Font Files
+        uses: actions/cache@v3
+        id: fonts-cache
+        with:
+          path: |
+            ~/.local/share/fonts
+            ~/.fontist/fonts
+            fontawesome-free-6.4.0-desktop
+          key: ${{ runner.os }}-fonts-6.4.0
+      
+      - name: Install fonts
+        if: steps.fonts-cache.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ~/.local/share/typst/packages/preview
+          mkdir -p ~/.local/share/fonts
+          mkdir -p ~/.fontist/fonts
+          
+          # Download Font Awesome free fonts (still need direct download)
+          curl -L -o fontawesome.zip https://use.fontawesome.com/releases/v6.4.0/fontawesome-free-6.4.0-desktop.zip
+          unzip fontawesome.zip
+          
+          # Install Trebuchet MS using fontist
+          fontist install "Trebuchet MS" --accept-all-licenses
+          
+          # Copy fonts to system fonts directory
+          cp fontawesome-free-6.4.0-desktop/otfs/*.otf ~/.local/share/fonts/
+          cp fontawesome-free-6.4.0-desktop/otfs/*.otf ~/.fontist/fonts/
+      
+      - name: Refresh font cache
+        run: fc-cache -f -v
+      
+      - name: Compile CV Showcase
+        run: typst compile cv-showcase.typ --font-path ~/.fontist/fonts
+      
+      - name: Upload Compiled PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: CV-Showcase
+          path: cv-showcase.pdf
