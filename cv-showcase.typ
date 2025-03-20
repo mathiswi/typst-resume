@@ -8,7 +8,7 @@
   contact: (
     location: "12345 Berlin",
     phone: "+49 123 4567890",
-    email: "max.mustermann@example.com",
+    email: "mustermann@example.com",
     links: [#link("https://github.com/maxmustermann")[GitHub], #link("https://linkedin.com/in/maxmustermann")[LinkedIn], #link("https://xing.com/profile/maxmustermann")[XING]]
   )
 )
