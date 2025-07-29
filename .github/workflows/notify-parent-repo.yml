@@ -15,5 +15,5 @@ jobs:
           curl -X POST \
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token ${{ secrets.PARENT_REPO_TOKEN }}" \
-            https://api.github.com/repos/mathiswitte/typst-resume-content/dispatches \
+            https://api.github.com/repos/mathiswi/typst-resume-content/dispatches \
             -d '{"event_type":"template-updated","client_payload":{"ref":"${{ github.ref }}","sha":"${{ github.sha }}"}}'
