@@ -9,7 +9,6 @@ alwaysApply: false
 ## Important
 
 * always check the terminal output for compilation errors before finishing a task
-* this project has the goal of recreating CV_Mathis_Witte.pdf, so always cross read this pdf file to see if it matches the look
 
 ## Basic Information
 - Typst is a markup-based typesetting system that compiles to PDF

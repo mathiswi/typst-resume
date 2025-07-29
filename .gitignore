@@ -11,5 +11,5 @@ Thumbs.db
 node_modules/
 
 # Personal content that should not be committed
-cv-personal.typ
-cv-personal.pdf
+cv-personal*.typ
+cv-personal*.pdf

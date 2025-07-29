@@ -52,7 +52,7 @@
 
 #let cv(doc, theme: defaultTheme) = {
   // Document setup
-  set document(author: "Mathis Witte", title: "Lebenslauf")
+  set document(author: "Mathis Witte", title: "CV")
   set page(
     margin: (left: 20mm, right: 20mm, top: 20mm, bottom: 20mm),
     numbering: none
