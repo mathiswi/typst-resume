@@ -5,7 +5,7 @@
   colors: (
     primary: black,
     text: black,
-    accent: rgb("#1772e9")  // Slightly lighter gray for better contrast
+    accent: rgb("#1772e8")  // Slightly lighter gray for better contrast
   ),
   
   // Typography
