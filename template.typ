@@ -97,7 +97,7 @@
     #v(-16pt)
     #text(weight: "medium", size: defaultTheme.fonts.size.subtitle)[#title]
   ]
-  
+
   // Contact info helper with just icons
   let makeContactRow(content, icon) = {
     grid(
@@ -108,14 +108,23 @@
     )
   }
 
-  // Contact info layout in a single row
+  // Build contact items dynamically based on which fields are provided
+  let contactItems = ()
+  if "location" in contact { contactItems.push(makeContactRow(contact.location, fa-location-dot())) }
+  if "email" in contact { contactItems.push(makeContactRow(contact.email, fa-envelope())) }
+  if "phone" in contact { contactItems.push(makeContactRow(contact.phone, fa-phone())) }
+  if "links" in contact { contactItems.push(makeContactRow(contact.links, fa-link())) }
+
+  // Always use 4-column grid, fill empty columns with empty content
+  while contactItems.len() < 4 {
+    contactItems.push([])
+  }
+
+  // Contact info layout in fixed 4-column grid
   grid(
     columns: (1fr, 1fr, 1fr, 1fr),
     gutter: 1em,
-    makeContactRow(contact.location, fa-location-dot()),
-    makeContactRow(contact.email, fa-envelope()),
-    makeContactRow(contact.phone, fa-phone()),
-    makeContactRow(contact.links, fa-link())
+    ..contactItems
   )
   v(defaultTheme.spacing.vertical.section)
 }
