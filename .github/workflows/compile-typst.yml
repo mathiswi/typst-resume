@@ -86,9 +86,9 @@ jobs:
           name: CV-Showcase
           path: cv-showcase.pdf
       
-      # Only notify parent repo if compilation was successful
+      # Only notify parent repo if compilation was successful and change didn't come from parent
       - name: Notify parent repository
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'sync template changes from cv-content')
         run: |
           echo "🚀 Template compilation successful - notifying content repo"
           curl -X POST \
