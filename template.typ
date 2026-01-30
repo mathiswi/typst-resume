@@ -10,7 +10,7 @@
   
   // Typography
   fonts: (
-    primary: "Trebuchet MS",
+    primary: "IBM Plex Sans",
     size: (
       base: 9.5pt,      // Slightly increased base size
       heading: 11pt,
@@ -185,27 +185,36 @@
   cvList(items: technologies)
 }
 
+#let cvSkillFullWidth(name: "", skills: "") = {
+  block[
+    #text(weight: "bold", size: defaultTheme.fonts.size.base)[#name]
+    #v(-2pt)
+    #text(size: 0.85em)[#skills]
+    #v(0.8em)
+  ]
+}
+
 #let cvSkillCategories(categories: ()) = {
   // Create a grid layout with 2 columns
   let grid_items = ()
-  
+
   // Build array of content items
   for (i, category) in categories.enumerate() {
     let (name, skills) = category
-    
+
     grid_items.push([
       // Category name in bold
       #text(weight: "bold", size: defaultTheme.fonts.size.base)[#name]
       #v(-2pt)           // Reduced from 2pt
-      
+
       // Skills for this category
       #text(size: 0.85em)[#skills]
-      
+
       // Add vertical space after each category
       #v(0.4em)         // Reduced from defaultTheme.spacing.vertical.item
     ])
   }
-  
+
   // Create grid with the items
   grid(
     columns: (1fr, 1fr),
