@@ -66,9 +66,7 @@ jobs:
           # Download Font Awesome free fonts (still need direct download)
           curl -L -o fontawesome.zip https://use.fontawesome.com/releases/v6.4.0/fontawesome-free-6.4.0-desktop.zip
           unzip fontawesome.zip
-          
-          # Install Trebuchet MS using fontist
-          fontist install "Trebuchet MS" --accept-all-licenses
+        
           
           # Copy fonts to system fonts directory
           cp fontawesome-free-6.4.0-desktop/otfs/*.otf ~/.local/share/fonts/
